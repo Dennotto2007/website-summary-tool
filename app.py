@@ -84,12 +84,11 @@ def generate_summary(text: str, language: str = "en", owner: str = None, title: 
     for attempt in range(max_retries):
         try:
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-5-mini",
                 messages=[
                     {"role": "system", "content": prompt["system"]},
                     {"role": "user", "content": prompt["user"]}
-                ],
-                temperature=0.7
+                ]
             )
             return response.choices[0].message.content
         except Exception as e:
